@@ -10,33 +10,32 @@ function getComputerChoice() {
 
 }
 
-function playRound(playerSelection, computerSelection) {
-    
-    playerSelection = playerSelection.toLowerCase()
 
-    if (computerSelection === playerSelection) {
-        return ("It's a tie!")
-    }else if (computerSelection === 'rock' && playerSelection === 'scissors') {
-        return ("You lose!, rock beats scissors.")
-    }else if (computerSelection === 'scissors' && playerSelection === 'paper') {
-        return ("You lose!, scissors beats paper.")
-    }else if (computerSelection === 'paper' && playerSelection === 'rock') {
-        return ("You lose!, paper beats rock.")
-    }else {
-        return (`You win!, ${playerSelection} beats ${computerSelection}`)
-    }
 
+const body = document.querySelector('body')
+const div = document.createElement('div')
+const buttons = document.querySelectorAll('button')
+body.append(div)
+
+
+function playGame() {
+  let playerChoice = this.innerText.toLocaleLowerCase()
+  let pcChoice = getComputerChoice()
+  div.textContent = ''
+  if (playerChoice === pcChoice) {
+    div.append("It's a tie!")
+  }else if (playerChoice === 'rock' && pcChoice === 'paper'){
+    div.append('You lose, paper beats rock')
+  }else if (playerChoice === 'paper' && pcChoice === 'scissors') {
+    div.append('You lose, scissors beats paper')
+  }else if (playerChoice === 'scissors' && pcChoice === 'rock') {
+    div.append('You lose, rock beats scissors') 
+  }else {
+    div.append('You win')
+  }
 }
 
-function Game() {
-
-    for (let i = 1; i <= 5; i++){
-        let selection = prompt('choose')
-        let outCome = playRound(selection, getComputerChoice())
-        console.log(outCome)
-    }
-
-}
-
-Game()
+buttons.forEach(button => {
+  button.addEventListener('click', playGame)
+})
 

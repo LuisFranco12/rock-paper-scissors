@@ -1,0 +1,12 @@
+button {
+    display: inline-block;
+    margin: 20px;
+}
+
+div {
+    margin: auto;
+    text-align: center;
+    width: 150px;
+    height: 150px;
+    background-color: #fb2312;
+}
